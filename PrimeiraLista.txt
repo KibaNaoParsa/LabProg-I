@@ -1,0 +1,211 @@
+1.
+    int n1, n2;
+
+    printf("Insira dois números inteiros:");
+    scanf("%d", &n1);
+    scanf("%d", &n2);
+
+    system("clear");
+
+    printf("A soma de %d e %d é: %d", n1, n2, n1+n2);
+
+    return 0;
+
+
+
+2. 
+    int n1, n2;
+    float f1, f2;
+
+    printf("Insira dois números inteiros:");
+    scanf("%d", &n1);
+    scanf("%d", &n2);
+
+    f1 = n1;
+    f2 = n2;
+
+    system("clear");
+
+    printf("A soma de %d e %d é: %d", n1, n2, n1+n2);
+    printf("\nA subtração de %d e %d é: %d", n1, n2, n1-n2);
+    printf("\nA multiplicação de %d e %d é: %d", n1, n2, n1*n2);
+    printf("\nA divisão de %d e %d é: %.2f", n1, n2, f1/f2);
+
+    return 0;
+
+
+
+3.
+    int n1, n2;
+    float f1, f2;
+
+    printf("Insira a distância percorrida:");
+    scanf("%d", &n1);
+
+    printf("Insira o combustível gasto:");
+    scanf("%d", &n2);
+
+    f1 = n1;
+    f2 = n2;
+
+    system("clear");
+
+    printf("Seu carro tem uma eficiência de %.1f km/l", f1/f2);
+
+    return 0;
+
+
+
+4.
+    float salario, vendas;
+    char nome[50];
+
+    printf("Insira o nome do vendedor:");
+    scanf(" %[^\n]", &nome);
+
+    printf("Insira o salário fixo: R$ ");
+    scanf("%f", &salario);
+
+    printf("Insira o total de vendas: R$ ");
+    scanf("%f", &vendas);
+
+    system("clear");
+
+    printf("Vendedor: %s", nome);
+    printf("\nSalário fixo: R$ %.2f", salario);
+    printf("\nSalário + comissão: R$ %.2f", salario+vendas*0.15);
+
+    return 0;
+
+
+
+5.
+    float n1, n2, n3, nM;
+    char nome[50];
+
+    printf("Insira o nome do aluno:");
+    scanf(" %[^\n]", &nome);
+
+    printf("Insira as três notas: ");
+    scanf("%f %f %f", &n1, &n2, &n3);
+
+    system("clear");
+
+    nM = n1+n2+n3;
+    nM /= 3;
+
+    printf("Aluno: %s", nome);
+    printf("\nMédia: %.2f", nM);
+
+    return 0;
+
+
+
+6.
+    int n1, n2;
+
+    printf("Insira um valor A e B:");
+    scanf("%d %d", &n1, &n2);
+
+    n1 += n2;
+    n2 = n1-n2;
+    n1 -= n2;
+
+    printf("\nInvertidos: A = %d , B = %d", n1, n2);
+
+    return 0;
+
+
+
+7.
+    float f1, f2;
+
+    printf("Insira uma temperatura em °C: ");
+    scanf("%f", &f1);
+
+    f2 = 9*f1+160;
+    f2 /= 5;
+
+    printf("%.2f °C é o mesmo que %.2f °F", f1, f2);
+
+    return 0;
+
+
+
+8.
+    float f1, f2;
+
+    printf("Insira o valor a ser convertido: US$ ");
+    scanf("%f", &f1);
+
+    printf("\nInsira a taxa de câmbio (US$ -> R$): ");
+    scanf("%f", &f2);
+
+    printf("\nVocê possui R$ %.2f", f1*f2);
+
+    return 0;
+
+
+
+9.
+    float f1;
+
+    printf("Insira o valor total do produto: R$ ");
+    scanf("%f", &f1);
+
+    printf("\nCada prestação (5) tem o valor de R$ %.2f", f1/5);
+
+    return 0;
+
+
+
+10.    
+    int n1;
+
+    printf("Insira um número qualquer: ");
+    scanf("%d", &n1);
+
+    if (n1 > 10)
+        printf("\nSeu número %d é maior que 10.", n1);
+
+    if (n1 == 10)
+        printf("\nSeu número %d é igual a 10.", n1);
+
+    if (n1 < 10)
+        printf("\nSeu número %d é menor que 10.", n1);
+        
+    return 0;
+
+
+
+11.
+    int n1, n2;
+
+    printf("Insira dois números inteiros quaisquer: ");
+    scanf("%d %d", &n1, &n2);
+
+    if (n1 > n2)
+        printf("\nO primeiro número é maior.");
+
+    if (n1 == n2)
+        printf("\nAmbos são iguais");
+
+    if (n1 < n2)
+        printf("\nO segundo número é maior");
+
+    return 0;
+
+
+
+12.
+    int n1;
+
+    printf("Insira um número qualquer: ");
+    scanf("%d", &n1);
+
+    if ((n1 >= 100) && (n1 <= 200))
+        printf("\nSeu número está dentro do intervalo 100-200");
+    else
+        printf("\nSeu número está fora do intervalo 100-200");
+
+    return 0;
