@@ -6,4 +6,8 @@ E lá vamos nós...
 
 - Primeira lista de LP1.
 
+**27/Agosto**
+
+- Segunda lista de LP1.
+
 
