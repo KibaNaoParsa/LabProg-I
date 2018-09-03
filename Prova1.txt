@@ -1,0 +1,116 @@
+1.1.
+
+    char nome[50];
+    float salario, vendas;
+
+    printf("Insira o nome do vendedor: ");
+    scanf(" %[^\n]s", &nome);
+    printf("Insira o seu salário: R$ ");
+    scanf("%f", &salario);
+    printf("Insira o total de vendas: R$ ");
+    scanf("%f", &vendas);
+
+    system("clear");
+
+    printf("Vendedor: %s", nome);
+    printf("\nSalário fixo: R$ %.2f", salario);
+    printf("\nSalário + comissão: R$ %.2f", salario+(vendas*0.17));
+
+    return 0;
+
+
+1.2.
+
+    char aluno[50];
+    float n1, n2, n3, media;
+
+    printf("Insira o nome do aluno: ");
+    scanf(" %[^\n]s", &aluno);
+    printf("Insira as três notas do aluno: ");
+    scanf("%f %f %f", &n1, &n2, &n3);
+
+    media = n1+n2+n3;
+    media /= 3;
+    system("clear");
+
+    printf("Aluno: %s", aluno);
+    printf("\nMédia do aluno: %.2f", media);
+
+    return 0;
+
+    
+2.2.
+
+    int idade;
+
+    printf("Insira a idade do nadador: ");
+    scanf("%d", &idade);
+
+    if ((idade >= 5) && (idade <= 7)) {
+        printf("Categoria: Infantil A");
+    } else if ((idade >= 8) && (idade <= 10)) {
+        printf("Categoria: Infantil B");
+    } else if ((idade >= 11) && (idade <= 13)) {
+        printf("Categoria: Juvenil A");
+    } else if ((idade >= 14) && (idade <= 17)) {
+        printf("Categoria: Juvenil B");
+    } else if ((idade >= 18) && (idade <= 25)) {
+        printf("Categoria: Senior");
+    } else {
+        printf("Idade inválida.");
+    }
+
+    return 0;
+
+    
+2.3.
+        
+    int numero;
+
+    printf("Insira um número: ");
+    scanf("%d", &numero);
+
+    if ((numero < 1) || (numero > 12)) {
+        printf("Número inválido");
+    } else {
+    switch (numero) {
+        case 1:
+            printf("Equivalente ao mês de janeiro");
+        break;
+        case 2:
+            printf("Equivalente ao mês de fevereiro");
+        break;
+        case 3:
+            printf("Equivalente ao mês de março");
+        break;
+        case 4:
+            printf("Equivalente ao mês de abril");
+        break;
+        case 5:
+            printf("Equivalente ao mês de maio");
+        break;
+        case 6:
+            printf("Equivalente ao mês de junho");
+        break;
+        case 7:
+            printf("Equivalente ao mês de julho");
+        break;
+        case 8:
+            printf("Equivalente ao mês de agosto");
+        break;
+        case 9:
+            printf("Equivalente ao mês de setembro");
+        break;
+        case 10:
+            printf("Equivalente ao mês de outubro");
+        break;
+        case 11:
+            printf("Equivalente ao mês de novembro");
+        break;
+        case 12:
+            printf("Equivalente ao mês de dezembro");
+        break;
+    }
+    }
+
+    return 0;
