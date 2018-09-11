@@ -10,4 +10,6 @@ E lá vamos nós...
 
 - Segunda lista de LP1.
 
+**10/Setembro**
 
+- Terceira lista de LP1.
