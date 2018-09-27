@@ -1,0 +1,156 @@
+1.
+int n;
+printf("Insira o tamanho do vetor: ");
+scanf("%d", &n);
+
+int v[n], soma = 0;
+system("clear");
+
+for (int i = 0; i < n; i++){
+	printf("Insira um valor para o vetor: ");
+	scanf("%d", &v[i]);
+	// soma += v[i];
+} 
+
+system("clear");
+
+for (int i = 0; i < n; i++){
+	soma += v[i];
+} 
+
+printf("A soma de todos os elementos é: ", &soma);
+
+return 0;
+
+
+2.
+// #include <stdlib.h>
+
+int n, valor;
+srand((unsigned)time(NULL));
+
+printf("Insira o tamanho do vetor: ");
+scanf("%d", &n);
+
+system("clear");
+int v[n], vezes = 0;
+
+printf("Insira um número aleatório: ");
+scanf("%d", &valor);
+
+for (int i = 0; i < n; i++) {
+	v[i] = rand () % 10;
+	if (v[i] == valor)
+		vezes++;
+}
+
+int i = 0;
+if (vezes == 0) {
+	printf("Valor não encontrado");
+} else {
+	printf("Valor encontrado na posição");
+	while (vezes > 0) {
+		if (v[i] == valor) {
+			printf(" %d", i);
+			vezes--;
+		}
+		i++;		
+	}
+}
+
+return 0;
+
+
+3.
+int v[15], maior, menor;
+
+printf("Insira um número para o vetor: ");
+scanf("%d", &v[0]);
+maior = v[0];
+menor = v[0];
+
+for (int i = 1; i < 15; i++) {
+	printf("Insira um número para o vetor: ");
+	scanf("%d", &v[i]);
+	if (v[i] > maior)
+		maior = v[i];
+	if (v[i] < menor)
+		menor = v[i];
+}
+
+system("clear");
+printf("Maior valor: %d", maior);
+printf("\nMenor valor: %d", menor);
+
+return 0;
+
+
+4.
+int v[10], perfeito = 0;
+
+int i = 0, n = 2;
+
+while (i < 10) {
+	for (int j = 1; j < n; j++) {
+		if (n%j == 0)
+			perfeito +=j;		
+	}
+	if (n == perfeito) {
+		v[i] = n;
+		printf("%d ", v[i]);
+		i++;
+	}
+	perfeito = 0;
+	n++;
+}
+
+return 0;
+
+
+5.
+int n;
+
+do {
+	printf("Insira um valor PAR: ");
+	scanf("%d", &n);
+} while (n%2 != 0);
+
+int mpar = 0, mimpar = 0;
+int vpar[n/2], vimpar[n/2];
+
+for (int i = 1; i <= n; i++) {
+	if (i%2 != 0) {
+		vimpar[mimpar] = i;
+		mimpar++;
+	} else {
+		vpar[mpar] = i;
+		mpar++;
+	}
+}
+
+printf("Vetor ímpar: ");
+for (int i = 0; i < n/2; i++) {
+	printf("%d ", vimpar[i]);
+}
+printf("\nVetor par: ");
+for (int i = 0; i < n/2; i++) {
+	printf("%d ", vpar[i]);
+}
+
+return 0;
+
+
+6.
+int v[30];
+v[0] = 0;
+v[1] = 1;
+
+for (int i = 2; i < 30; i++) {
+	v[i] = v[i-1] + v[i-2];
+}
+
+for (int i = 0; i < 30; i++) {
+	printf("%d ", v[i]);	
+}
+
+return 0;
