@@ -13,3 +13,7 @@ E lá vamos nós...
 **10/Setembro**
 
 - Terceira lista de LP1.
+
+**24/Setembro**
+
+- Quarta lista de LP1.
