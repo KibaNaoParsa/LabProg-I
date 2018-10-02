@@ -1,0 +1,187 @@
+1.
+    int mat[6][6];
+    int a;
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("%d , %d: ", 1+i, 1+j);
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    printf("\n");
+    printf("Insira uma constante para multiplicar a matriz: ");
+    scanf("%d", &a);
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            mat[i][j] *= a;
+        }
+    }
+
+    system("clear");
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+
+
+2.
+    int mat1[5][5];
+    int mat2[5][5];
+    int matS[5][5];
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("Matriz 1 - %d , %d: ", 1+i, 1+j);
+            scanf("%d", &mat1[i][j]);
+        }
+    }
+    system("clear");
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("Matriz 2 - %d , %d: ", 1+i, 1+j);
+            scanf("%d", &mat2[i][j]);
+        }
+    }
+
+    system("clear");
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            matS[i][j] = mat1[i][j] + mat2[i][j];
+            printf("%d ", matS[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+
+3.
+    int mat[5][5], soma = 0;
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("Matriz 1 - %d , %d: ", 1+i, 1+j);
+            scanf("%d", &mat[i][j]);
+            soma += mat[i][j];
+        }
+    }
+    system("clear");
+
+    printf("Soma igual a %d", soma);
+    
+    return 0;
+
+4.
+    int mat[5][5], soma = 0;
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("Matriz 1 - %d , %d: ", 1+i, 1+j);
+            scanf("%d", &mat[i][j]);
+            if (i==j)
+                soma += mat[i][j];
+        }
+    }
+    system("clear");
+
+    printf("Soma igual a %d", soma);
+
+    return 0;
+
+5.
+    int mat[7][4], valor, linha, coluna;
+
+    for (int i = 0; i < 7; i++) {
+        for (int j = 0; j < 4; j++) {
+            printf("%d , %d: ", i, j);
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    system("clear");
+
+    valor = mat[0][0];
+    linha = 0;
+    coluna = 0;
+
+    for (int i = 0; i < 7; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (mat[i][j] < valor) {
+                valor = mat[i][j];
+                linha = i;
+                coluna = j;
+            }
+        }
+    }
+
+    printf("Menor valor da matriz: %d\nLinha: %d\nColuna: %d", valor, linha, coluna);
+
+    return 0;
+
+6.
+    int mat[5][6];
+    float media=0, contador = 0;
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("%d , %d: ", i, j);
+            scanf("%d", &mat[i][j]);
+            if (mat[i][j] % 2 == 0) {
+                media += mat[i][j];
+                contador++;
+            }
+        }
+    }
+
+    system("clear");
+    media /= contador;
+
+    printf("Média: %f", media);
+
+    return 0;
+
+7.
+    int mat[5][5], sl[5], sc[5];
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d , %d: ", i, j);
+            scanf("%d", &mat[i][j]);
+        }
+        sl[i] = 0;
+        sc[i] = 0;
+    }
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+         sl[i] += mat[i][j];
+         sc[i] += mat[j][i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n Soma das linhas:");
+    for (int i = 0; i < 5; i++) {
+        printf("\nLinha %d: %d", i, sl[i]);
+    }
+
+    printf("\n Soma das colunas:");
+    for (int i = 0; i < 5; i++) {
+        printf("\nLinha %d: %d", i, sc[i]);
+    }
+    
+    return 0;
+
