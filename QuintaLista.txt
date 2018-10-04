@@ -143,7 +143,7 @@
     system("clear");
     media /= contador;
 
-    printf("Média: %f", media);
+    printf("MÃ©dia: %f", media);
 
     return 0;
 
@@ -180,8 +180,128 @@
 
     printf("\n Soma das colunas:");
     for (int i = 0; i < 5; i++) {
-        printf("\nLinha %d: %d", i, sc[i]);
+        printf("\nColuna %d: %d", i, sc[i]);
     }
     
     return 0;
 
+8.
+    int mat[6][6], mat2[6][6], matP[6][6];
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("Insira um valor para a primeira matriz: ");
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("Insira um valor para a segunda matriz: ");
+            scanf("%d", &mat2[i][j]);
+        }
+    }
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            matP[i][j] = mat[i][j] * mat2[i][j];
+        }
+    }
+
+    system("clear");
+    printf("Primeira matriz:\n");
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nSegunda matriz:\n");
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("%d ", mat2[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nMatriz produto:\n");
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("%d ", matP[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+    
+9.
+    int mat[6][6], tr;
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("Insira um valor para a matriz: ");
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    int j = 0;
+
+    for (int i = 0; i < 6; i++) {
+        while (j < 6) {
+            tr = mat[i][j];
+            mat[i][j] = mat[i][1+j];
+            mat[i][1+j] = tr;
+
+            j += 2;
+        }
+        j = 0;
+    }
+
+    system("clear");
+    printf("Matriz invertida:\n");
+
+    for (int i = 0; i < 6; i++) {
+        for (j = 0 ; j < 6; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+    
+ 10.
+     float mat[6][5], v[6], matR[6][5];
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("Insira um valor para a matriz: ");
+            scanf("%f", &mat[i][j]);
+        }
+    }
+
+    for (int i = 0; i < 6; i++)
+        v[i] = mat[i][0];
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (mat[i][j] > v[i])
+                v[i] = mat[i][j];
+        }
+    }
+
+    system("clear");
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 5; j++) {
+            matR[i][j] = mat[i][j] / v[i];
+        }
+    }
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%.3f ", matR[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
