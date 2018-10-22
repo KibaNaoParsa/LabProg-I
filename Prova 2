@@ -1,0 +1,87 @@
+Grupo 1/Ex. 1.
+int v[10], maior, menor;
+    float media;
+    
+    printf("Insira os valores no vetor:");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &v[i]);
+    }
+    
+    maior = v[0];
+    menor = v[0];
+    
+    for (int i = 0; i < 10; i++) {
+        if (v[i] > maior)
+            maior = v[i];
+        if (v[i] < menor)
+            menor = v[i];
+    }
+    
+    media = maior + menor;
+    media /= 2;
+    
+    printf("Maior: %d\nMenor: %d\n Média: %.2f", maior, menor, media);
+    
+
+    return 0;
+
+Grupo 2/Ex. 2.
+
+int v[15], maior, menor;
+
+printf("Insira um número para o vetor: ");
+scanf("%d", &v[0]);
+maior = v[0];
+menor = v[0];
+
+for (int i = 1; i < 15; i++) {
+	printf("Insira um número para o vetor: ");
+	scanf("%d", &v[i]);
+	if (v[i] > maior)
+		maior = v[i];
+	if (v[i] < menor)
+		menor = v[i];
+}
+
+system("clear");
+printf("Maior valor: %d", maior);
+printf("\nMenor valor: %d", menor);
+
+return 0;
+
+
+Grupo 3/Ex. 2.
+
+int mat[6][6], tr;
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            printf("Insira um valor para a matriz: ");
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    int j = 0;
+
+    for (int i = 0; i < 6; i++) {
+        while (j < 6) {
+            tr = mat[i][j];
+            mat[i][j] = mat[i][1+j];
+            mat[i][1+j] = tr;
+
+            j += 2;
+        }
+        j = 0;
+    }
+
+    system("clear");
+    printf("Matriz invertida:\n");
+
+    for (int i = 0; i < 6; i++) {
+        for (j = 0 ; j < 6; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+return 0;
