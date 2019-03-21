@@ -1,0 +1,76 @@
+// Nome: Elyas Correa Nogueira
+// Exercício de LP2 E2
+
+#include <iostream>
+#include <stdlib.h>
+#include <cmath>
+
+using namespace std;
+
+int primoII(int v1, int v2) {
+    int check = 0;
+    for (int i = 2; i < v1; i++) {
+        for (int j = 2; j < i; j++) {
+            if (i%j == 0)
+                check = 1;
+        }
+
+        if (check == 0) {
+            if ((i + v2) == v1) {
+                cout << "Os números primos que somados dão " << v1 << " são " << i << " e " << v2;
+                return 0;
+            }
+        }
+
+        check = 0;
+    }
+}
+
+int primoI(int v) {
+    int check = 0;
+    int r;
+    for (int i = 2; i < v; i++) {
+        for (int j = 2; j < i; j++) {
+            if (i % j == 0) {
+                check = 1;
+            }
+        }
+
+        if (check == 0) {
+            r = primoII(v, i);
+            if (r == 0)
+                return 0;
+        }
+
+        check = 0;
+    }
+}
+
+
+int main()
+{
+    int valor;
+    int r;
+    do {
+        cout << "Insira um número natural: ";
+        cin >> valor;
+        if (valor < 0) {
+            system("clear");
+            cout << "O número informado deve ser natural." << endl;
+        }
+    } while (valor < 0);
+
+    system("clear");
+    float fvalor = valor;
+
+    if (valor % 2 == 0) {
+        r = primoI(valor);
+        return 0;
+    } else {
+        cout << "A divisão de " << valor << " por 4 é ";
+        printf("%.2f", fvalor/4);
+    }
+
+    return 0;
+}
+
