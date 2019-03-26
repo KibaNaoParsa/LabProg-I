@@ -1,0 +1,113 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+class Aluno {
+
+private:
+    string nome;
+    double n1, n2;
+public:
+    Aluno() {
+        this->nome = "John Doe";
+        this->n1 = 0.0;
+        this->n2 = 0.0;
+    }
+
+    void setNome(string nome) {
+        this->nome = nome;
+    }
+
+    void setNota1(double n1) {
+        if ((n1 > 0.0) && (n1 < 100.0))
+            this->n1 = n1;
+        else
+            cerr << "O valor inserido é inválido" << endl;
+    }
+
+    void setNota2(double n2) {
+        if ((n2 > 0.0) && (n2 < 100.0))
+            this->n2 = n2;
+        else
+            cerr << "O valor inserido é inválido" << endl;
+    }
+
+    string getNome() {
+        return this->nome;
+    }
+
+    double getNota1() {
+        return this->n1;
+    }
+
+    double getNota2() {
+        return this->n2;
+    }
+};
+
+int main()
+{
+    int nalunos;
+    do {
+        cout << "Insira um número de alunos para serem inseridos (1-20): " << endl;
+        cin >> nalunos;
+
+        if ((nalunos < 1) || (nalunos > 20)) {
+            system("clear");
+            cout << "O número inserido está inválido" << endl;
+        }
+    } while ((nalunos < 1) || (nalunos > 20));
+
+    Aluno a[nalunos];
+    int menu, i = 0;
+    string nome;
+    double nota;
+
+    system("clear");
+    do {
+        cout << "1. Insira um aluno" << endl;
+        cout << "2. Calcule a média do aluno" << endl;
+        cout << "3. Calcule a média da sala" << endl;
+        cout << "0. Sair" << endl;
+        cin >> menu;
+        system("clear");
+        switch (menu) {
+            case 1:
+                // Inserir aluno
+                if (i < nalunos) {
+                    cout << "Nome do aluno " << i+1 << ": ";
+                    cin >> nome;
+                    a[i].setNome(nome);
+                    cout << "Nota 1 do aluno " << i+1 << ": ";
+                    cin >> nota;
+                    a[i].setNota1(nota);
+                    cout << "Nota 2 do aluno " << i+1 << ": ";
+                    cin >> nota;
+                    a[i].setNota2(nota);
+                    i++;
+                } else {
+                    cout << "Limite atingido" << endl;
+                }
+
+            break;
+            case 2:
+                // Calcular média de um aluno
+            break;
+            case 3:
+                // Calcular média da sala
+            break;
+            case 0:
+                return 0;
+            break;
+            default:
+                system("clear");
+                cout << "Número inválido." << endl;
+            break;
+        }
+
+        cout << endl;
+    } while (menu != 0);
+
+    return 0;
+}
