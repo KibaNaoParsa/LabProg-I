@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 
 using namespace std;
 
@@ -20,14 +21,14 @@ public:
     }
 
     void setNota1(double n1) {
-        if ((n1 > 0.0) && (n1 < 100.0))
+        if ((n1 >= 0.0) && (n1 <= 100.0))
             this->n1 = n1;
         else
             cerr << "O valor inserido é inválido" << endl;
     }
 
     void setNota2(double n2) {
-        if ((n2 > 0.0) && (n2 < 100.0))
+        if ((n2 >= 0.0) && (n2 <= 100.0))
             this->n2 = n2;
         else
             cerr << "O valor inserido é inválido" << endl;
@@ -43,6 +44,10 @@ public:
 
     double getNota2() {
         return this->n2;
+    }
+
+    double calcMediaAluno() {
+        return (this->n1 + this->n2)/2;
     }
 };
 
@@ -63,6 +68,7 @@ int main()
     int menu, i = 0;
     string nome;
     double nota;
+    double media = 0.0;
 
     system("clear");
     do {
@@ -73,6 +79,9 @@ int main()
         cin >> menu;
         system("clear");
         switch (menu) {
+            case 0:
+                return 0;
+            break;
             case 1:
                 // Inserir aluno
                 if (i < nalunos) {
@@ -92,13 +101,28 @@ int main()
 
             break;
             case 2:
-                // Calcular média de um aluno
+                int cursor;
+                do {
+                    cout << "Insira o código do aluno (0-" << i-1 << "): ";
+                    cin >> cursor;
+                    system("clear");
+                    if ((cursor < 0) || (cursor > i)) {
+                        cout << "Aluno inexistente." << endl;
+                    } else {
+                        cout << "Aluno: " << a[cursor].getNome() << endl;
+                        cout << "Média: " << a[cursor].calcMediaAluno() << endl;
+                    }
+                } while ((cursor < 0)||(cursor > i));
             break;
             case 3:
-                // Calcular média da sala
-            break;
-            case 0:
-                return 0;
+                media = 0.0;
+
+                for(int c = 0; c < i; c++)
+                    media += a[c].calcMediaAluno();
+
+                media /= i;
+
+                cout << "Média da sala: " << media << endl;
             break;
             default:
                 system("clear");
@@ -111,3 +135,4 @@ int main()
 
     return 0;
 }
+
