@@ -86,7 +86,8 @@ int main()
                 // Inserir aluno
                 if (i < nalunos) {
                     cout << "Nome do aluno " << i+1 << ": ";
-                    cin >> nome;
+                    cin.ignore();
+                    getline(cin, nome);
                     a[i].setNome(nome);
                     cout << "Nota 1 do aluno " << i+1 << ": ";
                     cin >> nota;
@@ -135,4 +136,3 @@ int main()
 
     return 0;
 }
-
