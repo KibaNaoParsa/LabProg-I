@@ -1,0 +1,84 @@
+/*
+    Nome: Elyas Correa Nogueira
+    Exercício de LP2 L4
+*/
+
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+const int LIM_VETOR = 10;
+
+class Operacional {
+private:
+    int valores[LIM_VETOR];
+    int cont;
+public:
+    Operacional() {
+        for (int i = 0; i < LIM_VETOR; i++)
+            this->valores[i] = 0;
+        this->cont = 0;
+    }
+
+    void adicionarValor(int val) {
+        if (this->cont < LIM_VETOR) {
+            this->valores[this->cont] = val;
+            this->cont += 1;
+        } else {
+            cerr << "O limite já foi atingido" << endl;
+        }
+    }
+
+    void somaEProduto(int &mSoma, int &mProduto) {
+        int soma = 0, produto = 1;
+
+        for(int i = 0; i < this->cont; i++) {
+            soma += this->valores[i];
+            produto *= this->valores[i];
+        }
+
+        mSoma = soma;
+        mProduto = produto;
+    }
+
+};
+
+int main()
+{
+    int menu, val;
+    Operacional o;
+    int mSoma, mProduto;
+    do {
+        cout << "1. Inserir número" << endl;
+        cout << "2. Calcular soma e produto" << endl;
+        cout << "0. Sair" << endl;
+        cin >> menu;
+        system("clear");
+        switch (menu) {
+        case 1:
+            cout << "Qual é o número para ser inserido? ";
+            cin >> val;
+            o.adicionarValor(val);
+            cout << endl;
+        break;
+        case 2:
+            o.somaEProduto(mSoma, mProduto);
+            cout << "A soma dos valores informados é " << mSoma << endl;
+            cout << "O produto dos valores informados é " << mProduto << endl;
+
+            cout << endl;
+        break;
+        case 0:
+            return 0;
+        break;
+        default:
+            cout << "O valor inserido é inválido" << endl;
+            cout << endl;
+        break;
+        }
+
+    } while (menu != 0);
+
+    return 0;
+}
