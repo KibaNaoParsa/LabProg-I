@@ -1,0 +1,122 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+class Municao {
+private:
+    double calibre;
+    double comprimento;
+    double pressao;
+public:
+    Municao() {
+        this->calibre = 0.0;
+        this->comprimento = 0.0;
+        this->pressao = 0.0;
+    }
+
+    Municao(double ca, double co, double p) {
+        this->calibre = ca;
+        this->comprimento = co;
+        this->pressao = p;
+    }
+
+    double getCalibre() {
+        return this->calibre;
+    }
+
+    double getComprimento() {
+        return this->comprimento;
+    }
+
+    double getPressao() {
+        return this->pressao;
+    }
+
+        // IMAGINE QUE OS SETS FORAM FEITOS (TÔ BAIANO HOJE)
+
+
+};
+
+class Arma {
+private:
+    string nome;
+    double rof;
+    double preco;
+    int capacidade;
+    double velocidade;
+    Municao municao;
+public:
+    Arma(string nome, double rof, double pr, int ca, double v, Municao m) {
+        this->nome = nome;
+        this->rof = rof;
+        this->preco = pr;
+        this->velocidade = v;
+        this->capacidade = ca;
+        this->municao = m;
+    }
+
+    string getNome() const {
+        return this->nome;
+    }
+
+    double getROF() const {
+        return this->rof;
+    }
+
+    double getPreco() const {
+        return this->preco;
+    }
+
+    double getVelocidade() const {
+        return this->velocidade;
+    }
+
+    int getCapacidade() const {
+        return this->capacidade;
+    }
+
+    Municao getMunicao() const {
+        return this->municao;
+    }
+
+    // IMAGINE QUE OS SETS FORAM FEITOS (TÔ BAIANO HOJE)
+
+};
+
+
+int main()
+{
+    // Nesta linha, são instanciadas duas munições, que possuem os valores determinados no construtor.
+    Municao m1(7.62, 69.9, 60191.0), m2(.50, 138, 60481.0);
+
+    // Uma vez que as munições foram definidas, é possível instanciar duas armas que possuem um dos tipos de munição (construtor completo)
+    Arma a1("AK-47", 600, 4700, 31, 710, m1), a2("Barrett M82", 15, 360000, 11, 853, m2);
+
+    cout << "Arma 1: " << endl;
+    cout << "Nome: " << a1.getNome() << endl;
+    cout << "Rate of Fire (tiros por minuto): " << a1.getROF() << endl;
+    cout << "Preço: R$ " << a1.getPreco() << endl;
+    cout << "Capacidade: " << a1.getCapacidade() << endl;
+    cout << "Velocidade: " << a1.getVelocidade() << " m/s" << endl;
+    // Não é possível 'getar' só a munição, então, quando você 'geta' a munição, você ainda deve pegar as variáveis daquela munição
+    cout << "Calibre da munição: " << a1.getMunicao().getCalibre() << endl;
+    cout << "Comprimento da munição: " << a1.getMunicao().getComprimento() << endl;
+    cout << "Pressão máxima da munição: " << a1.getMunicao().getPressao() << " psi" << endl;
+
+    cout << endl;
+
+    cout << "Arma 2: " << endl;
+    cout << "Nome: " << a2.getNome() << endl;
+    cout << "Rate of Fire (tiros por minuto): " << a2.getROF() << endl;
+    cout << "Preço: R$ " << a2.getPreco() << endl;
+    cout << "Capacidade: " << a2.getCapacidade() << endl;
+    cout << "Velocidade: " << a1.getVelocidade() << " m/s" << endl;
+    cout << "Calibre da munição: " << a2.getMunicao().getCalibre() << endl;
+    cout << "Comprimento da munição: " << a2.getMunicao().getComprimento() << " mm" << endl;
+    cout << "Pressão máxima da munição: " << a2.getMunicao().getPressao() << " psi" << endl;
+
+
+    return 0;
+}
+
