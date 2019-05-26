@@ -1,0 +1,283 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+class Localizacao {
+private:
+    double latitude, longitude;
+public:
+    Localizacao() {
+        this->latitude = 0.0;
+        this->longitude = 0.0;
+    }
+    
+    Localizacao(double latitude, double longitude) {
+        this->latitude = latitude;
+        this->longitude = longitude;
+    }
+    
+    double getLatitude() const {
+        return this->latitude;
+    }
+    
+    double getLongitude() const {
+        return this->longitude;
+    }
+    
+    void setLatitude(double l) {
+        this->latitude = l;
+    }
+    
+    void setLongitude(double l) {
+        this->longitude = l;
+    }
+};
+
+class Construcao {
+    private:
+        Localizacao localizacao;
+        double area;
+        int padrao;
+    public:
+        Construcao() {
+            this->area = 0.0;
+            this->padrao = 1;
+        }
+        
+        Construcao(Localizacao l, double a, int p){
+            this->localizacao = l;
+            this->area = a;
+            this->padrao = p;
+        }
+    
+        Localizacao getLocalizacao() const {
+            return this->localizacao;
+        }  
+        
+        double getArea() const {
+            return this->area;
+        }
+        
+        string getPadrao() const {
+            if (this->padrao == 1)
+                return "baixo";
+            if (this->padrao == 2)
+                return "médio";
+            if (this->padrao == 3)
+                return "alto";
+        }
+        
+        void setLocalizacao(Localizacao l){
+            this->localizacao = l;
+        }
+        
+        void setArea(double a){
+            this->area = a;
+        }
+        
+        void setPadrao(int p){
+            this->padrao = p;
+        }
+};
+
+class Casa: public Construcao {
+private:
+    double area_casa;
+public:
+    Casa(){
+        this->area_casa = 0.0;
+    }
+    
+    Casa(double a){ 
+        this->area_casa = a;
+    }
+    
+    double getAreaCasa() const {
+        return this->area_casa;
+    }
+    
+    void setAreaCasa(double a){
+        this->area_casa = a;
+    }
+    
+    double getValor(){
+        if (this->getPadrao() == "baixo")
+            return area_casa*700;
+        if (this->getPadrao() == "médio") 
+            return area_casa*900;
+        if (this->getPadrao() == "alto")
+            return area_casa*1100;
+    }
+};
+
+class Predio: public Construcao {
+private:
+    int andares;
+    int apartamentos;
+    double area_apartamento;
+    int opcao;
+public:
+    Predio(){
+        this->andares = 1;
+        this->apartamentos = 0;
+        this->area_apartamento = 0.0;
+        this->opcao = 1;
+    }
+    
+    Predio(int an, int ap, double a, int o){
+        this->andares = an;
+        this->apartamentos = ap;
+        this->area_apartamento = a;
+        this->opcao = o;
+    }
+    
+    int getAndares() const {
+        return this->andares;
+    }
+    
+    int getApartamentos() const {
+        return this->apartamentos;
+    }
+    
+    double getAreaApartamento() const {
+        return this->area_apartamento;
+    }
+    
+    string getOpcao() const {
+        if (this->opcao == 1)
+            return "Construção convencional";
+        if (this->opcao == 2)
+            return "Alvenaria estrutural";
+    }
+    
+    void setAndares(int andares){
+        this->andares = andares;
+    }
+    
+    void setApartamentos(int apartamentos){
+        this->apartamentos = apartamentos;
+    }
+    
+    void setAreaApartamento(double area){
+        this->area_apartamento = area;
+    }
+    
+    void setOpcao(int opcao){
+        this->opcao = opcao;
+    }
+    
+    double getValorApartamento(){
+        if(this->opcao == 1) {
+            if (this->getPadrao() == "baixo") 
+                return this->area_apartamento*700*1.1;
+            if (this->getPadrao() == "médio") 
+                return this->area_apartamento*900*1.1;
+            if (this->getPadrao() == "alto") 
+                return this->area_apartamento*1100*1.1;
+            
+        } else if (this->opcao == 2) {
+            if (this->getPadrao() == "baixo")
+                return this->area_apartamento*700*0.9;
+            if (this->getPadrao() == "médio")
+                return this->area_apartamento*900*0.9;
+            if (this->getPadrao() == "alto")
+                return this->area_apartamento*1100*0.9;
+        }
+    }
+
+    double getValorPredio(){
+        return this->getValorApartamento()*this->andares*this->apartamentos;
+    }
+};
+
+
+int main()
+{
+    double latitude, longitude;
+    
+    cout << "Latitude: ";
+    cin >> latitude;
+    cout << "Longitude: ";
+    cin >> longitude;
+    Localizacao l(latitude, longitude);
+    
+    double area;
+    int padrao;
+    
+    cout << "Área total do terreno: ";
+    cin >> area;
+    cout << "Padrão de construção\n1.Baixo\n2.Médio\n3.Alto\n";
+    cin >> padrao;
+    
+    if (padrao < 1 || padrao > 3)
+        return 0;
+    
+    system("clear");
+    
+    int tipo;
+    
+    cout << "1. Casa" << endl;
+    cout << "2. Prédio" << endl;
+    cin >> tipo;
+    
+    system("clear");
+    
+    if (tipo == 1) {
+        
+        Casa c;
+        double area_casa;
+        
+        cout << "Área construída da casa: " << endl;
+        cin >> area_casa;
+        c.setLocalizacao(l);
+        c.setArea(area);
+        c.setPadrao(padrao);
+        c.setAreaCasa(area_casa);
+        
+        cout << "Construção do tipo casa localizada nas coordenadas de latitude " << c.getLocalizacao().getLatitude() << ", longitude " << c.getLocalizacao().getLongitude() << ", com um terreno de " << c.getArea() << " m², padrão de construção " << c.getPadrao() << " e valor de construção R$ " << c.getValor() << "." << endl;
+        
+    } else if (tipo == 2) {
+
+        Predio p;
+    
+        int opcao;
+        double area_apartamento;
+        int ap, an;
+
+        cout << "Número de andares do prédio: ";
+        cin >> an;
+        cout << "Número de apartamentos por andar: ";
+        cin >> ap;
+        cout << "Área de um apartamento: ";
+        cin >> area_apartamento;
+        cout << "Tipo de construção\n1. Construção convecional\n2. Alvenaria estrutural\n";
+        cin >> opcao;
+        
+        if (opcao < 1 || opcao > 2)
+            return 0;
+        
+        p.setLocalizacao(l);
+        p.setArea(area);
+        p.setPadrao(padrao);
+        p.setAndares(an);
+        p.setApartamentos(ap);
+        p.setAreaApartamento(area_apartamento);
+        p.setOpcao(opcao);
+        
+        cout << "Construção do tipo prédio localizada nas coordenadas de latitude " << p.getLocalizacao().getLatitude() << ", longitude " << p.getLocalizacao().getLongitude() << ", com um terreno de " << p.getArea() << " m² padrão de construção " << p.getPadrao() << ". \nPrédio possuindo " << p.getAndares() << " andares, " << p.getApartamentos() << " apartamentos por andar, cada apartamento com valor de construção R$ " << p.getValorApartamento() << ", totalizando um valor R$ " << p.getValorPredio() << " da construção do prédio" << endl;
+
+    } else {
+        cout << "Valor inválido";
+    }
+    
+    return 0;
+}
