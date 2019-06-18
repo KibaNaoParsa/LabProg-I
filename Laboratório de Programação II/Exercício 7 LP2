@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+class Forma {
+public:
+    virtual void area() = 0;
+
+    virtual void nome() {
+        cout << "Nome indefinido" << endl;
+    }
+};
+
+class Retangulo : public Forma {
+protected:
+    int x1, x2, x3, x4;
+    int y1, y2, y3, y4;
+
+public:
+    Retangulo() : Forma () {
+        this->x1 = 0;
+        this->x2 = 0;
+        this->x3 = 0;
+        this->x4 = 0;
+        this->y1 = 0;
+        this->y2 = 0;
+        this->y3 = 0;
+        this->y4 = 0;
+    }
+
+    Retangulo(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) : Forma () {
+        this->x1 = x1;
+        this->x2 = x2;
+        this->x3 = x3;
+        this->x4 = x4;
+        this->y1 = y1;
+        this->y2 = y2;
+        this->y3 = y3;
+        this->y4 = y4;
+    }
+
+    void area() {
+        int difx = x1-x4;
+        int dify = y1-y4;
+        int area = difx*dify;
+
+        if (area < 0)
+            area *= -1;
+
+        cout << "A área do retângulo é " << area << " u²" << endl;
+
+    }
+
+    void nome() {
+        cout << "Retângulo" << endl;
+    }
+};
+
+
+int main()
+{
+    Retangulo r(2, 1, 2, 5, 5, 1, 5, 5);
+    Retangulo *ptrRetangulo = &r;
+
+    cout << "Forma: ";
+    ptrRetangulo->nome();
+    cout << "Pontos do retângulo:\n(2, 1); (2, 5); (5, 1); (5, 5);" << endl;
+    ptrRetangulo->area();
+
+    return 0;
+}
+
