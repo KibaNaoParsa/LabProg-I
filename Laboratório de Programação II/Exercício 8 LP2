@@ -1,0 +1,91 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+class CotaPassagem {
+protected:
+    double cotaDeEscavacao;
+public:
+    CotaPassagem() {
+        this->cotaDeEscavacao = 0.0;
+    }
+
+    CotaPassagem(double cotaDeEscavacao) {
+        this->cotaDeEscavacao = cotaDeEscavacao;
+    }
+
+    virtual void calcular() = 0;
+};
+
+class CotaH : public CotaPassagem {
+protected:
+    double altura;
+public:
+    CotaH() {
+        this->altura = 0.0;
+    }
+
+    CotaH(double cotaDeEscavacao, double altura) : CotaPassagem(cotaDeEscavacao) {
+        this->altura = altura;
+    }
+
+    virtual void calcular() {
+        cout << "Cota de Passagem: " << this->cotaDeEscavacao + this->altura << endl;
+    }
+};
+
+class CotaVS : public CotaH {
+protected:
+    double volumeDeEscavacao;
+    double area;
+public:
+    CotaVS() {
+        this->volumeDeEscavacao = 0.0;
+        this->area = 0.0;
+    }
+
+    CotaVS(double volumeDeEscavacao, double area, double cotaDeEscavacao, double altura) : CotaH(cotaDeEscavacao, altura) {
+        this->volumeDeEscavacao = volumeDeEscavacao;
+        this->area = area;
+    }
+
+    virtual void calcular() {
+        cout << "Cota de passagem: " << this->cotaDeEscavacao + (this->volumeDeEscavacao/this->area) << endl;
+    }
+};
+
+
+
+int main()
+{
+    double c0;
+    cout << "Cota de escavação: ";
+    cin >> c0;
+    CotaPassagem *ptr;
+    int menu;
+    cout << "Você deseja calcular a cota de passagem por:\n1. Altura\n2. Volume de Escavação e Área da Base" << endl;
+    cin >> menu;
+    system("clear");
+    if (menu == 1) {
+            double altura;
+            cout << "Informe a altura: " << endl;
+            cin >> altura;
+            ptr = new CotaH(c0, altura);
+            ptr->calcular();
+    } else if (menu == 2) {
+            double volume, area;
+            cout << "Informe o volume de escavação: ";
+            cin >> volume;
+            cout << "Informe a área da base: ";
+            cin >> area;
+            ptr = new CotaVS(volume, area, c0, 0);
+            ptr->calcular();
+    } else {
+            cout << "Inválido";
+    }
+
+
+    return 0;
+}
+
